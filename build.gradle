@@ -1,0 +1,38 @@
+plugins {
+    id 'java'
+}
+
+group 'com.selcukc'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+task receiverFatJar(type: Jar){
+    manifest {
+        attributes 'Main-Class': 'com.selcukc.senderReceiver.Recv'
+    }
+    baseName = 'receiver-jar'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+task senderFatJar(type: Jar){
+    manifest {
+        attributes 'Main-Class': 'com.selcukc.senderReceiver.Send'
+    }
+    baseName = 'sender-jar'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.rabbitmq', name: 'amqp-client', version: '5.6.0'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.11.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.11.2'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
