@@ -107,3 +107,11 @@ $ sudo rabbitmqctl start_app;
 * To make all queues HA run this command at master. With this policy enabled RabbitMQ sync all queues to all nodes.
 
 `$ sudo rabbitmqctl set_policy ha-all "" '{"ha-mode":"all","ha-sync-mode":"automatic"}'`
+
+### Java test
+
+ * `gradle clean`
+ * `gradle receiverFatJar`
+ * `java -jar build/libs/receiver-jar-1.0-SNAPSHOT.jar`
+ * `gradle senderFatJar`
+ * `java -jar build/libs/sender-jar-1.0-SNAPSHOT.jar`
