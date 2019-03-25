@@ -5,7 +5,7 @@
 
 RabbitMQ needs Erlang to run so first of all we will install Erlang;
 
-##### First of all, fixing Erlang version for RabbitMQ needs;
+#### First of all, fixing Erlang version for RabbitMQ needs;
 
 ```
 # edit with sudo vi /etc/apt/preferences.d/erlang and add this
@@ -64,7 +64,7 @@ $ sudo systemctl enable rabbitmq-server
 
 `$ sudo rabbitmq-plugins enable rabbitmq_management`
 
-##### Setup RabbitMQ Cluster
+#### Setup RabbitMQ Cluster
 
 * After that we will setup RabbitMQ cluster;
 
@@ -88,7 +88,7 @@ $ sudo rabbitmqctl start_app;
 
 `$ sudo rabbitmqctl cluster_status;`
 
-##### Adding new administrator user
+#### Adding new administrator user
 
 * Add a new/fresh user, say user ‘test’ and password ‘test’
 
@@ -102,7 +102,7 @@ $ sudo rabbitmqctl start_app;
 
 `$ sudo rabbitmqctl set_permissions -p / test ".*" ".*" ".*"`
 
-##### HA Queues
+#### HA Queues
 
 * To make all queues HA run this command at master. With this policy enabled RabbitMQ sync all queues to all nodes.
 
